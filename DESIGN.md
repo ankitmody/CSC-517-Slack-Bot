@@ -6,9 +6,11 @@ GitHub has provided an amazing interface for developers who want to develop appl
  
 ## Bot Description
 
-We plan to propose an ExampleBot which can solve the problem faced by all the beginners who aim to use GitHub API and need some resource for their development. The chrome extension will provide a platform for users to get an example for an API without going through the trouble of looking back and forth in the GitHub documentation. In this way, it not only provides developers a quick way to find the examples but also gives an up-to-date API request example in case GitHub updates the API endpoints. When a developer tries to look for the example, he spends time and manual effort in going through the documentation and/or online resources with no immediate success guaranteed. Thus, the bot would save a lot of time of developers to search for the correct content and reduces significant development time.  The bot in this scenario not only helps to get the correct answers for the developers but also allows ease of usage. The bot would respond to the developer requests like "Create a repository" with an API Request example.
+We plan to propose an ExampleBot which can solve the problem faced by all the beginners who aim to use GitHub API and need some resource for their development. The chrome extension will provide a platform for users to get an example for an API without going through the trouble of looking back and forth in the GitHub documentation. This Bot will be based on user queries which will trigger an event allowing our bot to respond accordingly. As this bot facilitates responds to users using the API resources, it can be considered as a Chat-Dev Bot and fits best into the category of Documentation Bot. 
+
+ExampleBot not only provides developers a quick way to find the examples but also gives an up-to-date API request example in case GitHub updates the API endpoints. When a developer tries to look for the example, he spends time and manual effort in going through the documentation and/or online resources with no immediate success guaranteed. Thus, the bot would save a lot of time of developers to search for the correct content and reduces significant development time.  The bot in this scenario not only helps to get the correct answers for the developers but also allows ease of usage. The bot would respond to the developer requests like "Create a repository" with an API Request example.
 
 
 ### Tagline:
 
-***Serving API examples, Speeding development*** 
+***Serving API Examples. Expediting Learning. Streamlining Development*** 
