@@ -86,7 +86,7 @@ The bot will provide curl commands to the user which he can execute on his termi
 
 ### Wireframe 2: Edit an issue
 
-<img src="Wireframe2.gif" width="600" align="center">
+<img src="Wireframe2.gif" align="center">
 
 ## Architecture Design
 
