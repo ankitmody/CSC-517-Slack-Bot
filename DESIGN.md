@@ -103,15 +103,15 @@ The bot will provide curl commands to the user which he can execute on his termi
 
 We will be using Slack Server to deploy the GitHubYodaBot. The main components of our GitHubYodaBot architectureare as follows:
 
-**1.Slack:** Slack user interface is a platform where the user interacts with the chat bot. User can input the commandsin a natural conversational language.
+**1.Slack:** Slack user interface is a platform where the user interacts with the chat bot. User can input the commands in a natural conversational language.
 
-**2.GitHub Documentation:** We will use GitHub Documentation for the The examples of all the GitHub endpointsare freely available on the documentation. Our Bot will make use of the GitHub Documentation in order to helpuser with customized API request. The documentation is filled with generic request examples for all endpoints.
+**2.GitHub Documentation:** We will use GitHub Documentation for the examples. Available GitHub endpoints and relevant parameters are freely available on the documentation. Our Bot will make use of the GitHub Documentation in order to help users with customized API requests. The documentation is filled with generic request examples for all endpoints as well.
 
-**3.Web Crawler:** We will be using a web crawler that will systematically browse the GitHub documentation. Thejob of our crawler is to check for the freshens of the data in database.
+**3.Web Crawler:** We will be using a web crawler that will systematically browse the GitHub documentation. The job of our crawler is to check for the freshness of the data in database and update it accordingly. 
 
-**4.Bot Engine:** Bot Engine is an intelligent engine that interprets user inputs and interacts with the database as wellas the web crawler to get the required response and sends the response to the user.
+**4.Bot Engine:** Bot Engine is an intelligent engine that interprets user inputs and interacts with the database as well as the web crawler to get the required response and sends the response to the user.
 
-**5.Database:** This database is a document based database consisting of all the generic examples that the bot willsend as a response to the user requests. Also, this database will be populated with the results obtained from theWeb Crawler.
+**5.Database:** This database is a document based database consisting of all the generic examples that the bot will send as a response to user requests. Also, this database will be populated with the results obtained from the Web Crawler.
 
 ### Guideline
 
