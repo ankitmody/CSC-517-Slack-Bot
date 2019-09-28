@@ -94,9 +94,6 @@ The bot will provide curl commands to the user which he can execute on his termi
 
 ![Architecture Diagram](/ArchitectureDiagram.png)
 
-![BotEngine](/BotEngine.png)
-
-
 ### Architecture Components
 
 We will be using Slack Server to deploy the GitHubYodaBot. The main components of our GitHubYodaBot architectureare as follows:
@@ -110,6 +107,8 @@ We will be using Slack Server to deploy the GitHubYodaBot. The main components o
 **4. Database:** For storing and querying purpose we will use a document based database consisting of all the generic examples. The database will be populated by the time-to-time web crawler's scrapping so that our database has fresh request examples. Database will also have a default set of questionnaire that will be used to gather user requirements to build a customized request for him. These questions will be a necessary constraints as a part of the bot interactions with the user.
 
 **5. Bot Engine:** Bot Engine is an intelligent engine that interprets user inputs to automate and fulfil his requirements. The bot will query the database to get the generic API request that was scrapped by web crawler and stored in the database. It will then develop a customized request based on the answers given by user and return it to user via Slack. It will also provide the user with an option to execute the command on his behalf. 
+
+![BotEngine](/BotEngine.png)
 
 #### Bot Engine Design
 
