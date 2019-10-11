@@ -17,9 +17,52 @@ The bot will provide curl commands to the user which he can execute on his termi
 
 ## 3. Use Cases
 
-### Use Case 1: Example to Create a Repo
+### Use Case 1: Search Topics
 
 <pre><code>
+ 1. Preconditions
+    User must have GitHub API token in system
+    
+ 2. Main Flow
+    User will request an example for "search"
+   
+    [S1] User will request for an example to perform search in Github. 
+    [S2] Bot will provide possible pre-defined options for "search": repositories, commits, code, 
+         users, topics, labels, issues, pull requests
+    [S3] Bot will return a curl command example to search based on input.        
+    [S4] Bot will perform search on topic.
+    
+ 3. Subflows
+    
+    [S1] User writes that "I want to see an example for search".
+    [S2] Bot shows a list of options to perform search in the from of drop-down list and user can pick 
+         any one of them. Suppose user selects Search based on Topics.
+    [S3] Bot will ask the user if he wants it to execute the curl command.
+    
+ 4. Alternative Flows:
+   
+    [E2] User does not select any criteria to perform search, the bot will wait for a fixed time interval 
+         and will end the conversation.
+       
+</code></pre>
+
+### Use Case 2: Example to Edit an Issue
+
+<pre><code>
+ 1. Preconditions
+    User must have GitHub API token in system
+    
+ 2. Main Flow
+    User will request an example to edit an issue "123" for repository "XYZ"
+ 3. Subflows
+    [S1] User provides repository name. User provides issue ID.
+    [S2] Bot will return a curl command example to edit an issue. 
+         Asks the user if he wants it to execute the curl command.
+    [S3] Bot will allow the user to edit an issue with given issue ID and repository name.
+</code></pre>
+
+### Use Case 3: Example to Create a Repository
+
  1. Preconditions
     User must have GitHub API token in system
  2. Main Flow
@@ -29,21 +72,6 @@ The bot will provide curl commands to the user which he can execute on his termi
     [S2] Bot will return a curl command example to create a new repository.
          Asks the user if he wants it to execute the curl command. 
     [S3] Bot will create a new repository.
-</code></pre>
-
-### Use Case 2: Example to Edit an Issue
-
-<pre><code>
- 1. Preconditions
-    User must have GitHub API token in system
- 2. Main Flow
-    User will request an example to edit an issue "123" for repository "XYZ"
- 3. Subflows
-    [S1] User provides repository name. User provides issue ID.
-    [S2] Bot will return a curl command example to edit an issue. 
-         Asks the user if he wants it to execute the curl command.
-    [S3] Bot will allow the user to edit an issue with given issue ID and repository name.
-</code></pre>
 
 ### Use Case 3: Example to List events for an Issue
 
