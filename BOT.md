@@ -33,17 +33,14 @@ We will be handling all available Github API endpoints and will be dealing with 
  2. Main Flow
     User will request an example for "search"
    
-    [S1] User will request for an example to perform search in Github. 
-    [S2] Bot will provide possible pre-defined options for "search": repositories, commits, code, 
-         users, topics, labels, issues, pull requests
-    [S3] Bot will return a curl command example to search based on query input.        
-    [S4] Bot will perform search on topic.
+    [S1] User will request for an example to perform search a Topic in GitHub.
+    [S2] Bot will return a curl command example to search based on query input.        
+    [S3] Bot will perform search on topic.
     
  3. Subflows
     
-    [S1] User writes "I want to see an example for search".
-    [S2] Bot shows a list of options to perform search in the from of drop-down list and user can pick 
-         any one of them. Suppose user selects Search based on Topics.
+    [S1] User writes "I want to see an example for search of a Topic".
+    [S2] Bot asks the user to enter qualifier q. 
     [S3] Bot will ask the user if he wants to execute the curl command.
     
  4. Alternative Flows
@@ -63,13 +60,14 @@ We will be handling all available Github API endpoints and will be dealing with 
 2. Main Flow
    User will request an example for publicly available information of a user 
    
-   [S1] User will request for an example to get details of a user on Github. 
+   [S1] User will request for an example to get details of a user on GitHub. 
    [S2] Bot will return a curl command example to get user information on query input.        
    [S3] Bot will display the user.
    
 3. Sub Flows
    
    [S1] User writes "I want to know about user XYZ".
+   [s2] Bot asks the user to enter username.
    [S3] Bot will ask the user if he wants to execute the curl command.
    
 4. Alternative Flows
@@ -88,15 +86,13 @@ We will be handling all available Github API endpoints and will be dealing with 
  2. Main Flow
     User will request an example to edit an issue "123" for repository "XYZ"
     
-    [S1] User will request for an example to work with iusses in Github. 
-    [S2] Bot will provide possible pre-defined options for "issues": list, get, create, edit, lock an issue.
-    [S3] Bot will return a curl command example to edit an issue based on query input.        
-    [S4] Bot will edit the issue.
+    [S1] User will request for an example to edit an issue on GitHub. 
+    [S2] Bot will return a curl command example to edit an issue based on query input.        
+    [S3] Bot will edit the issue.
     
  3. Subflows
-    [S1] User writes "I want to work with issues".
-    [S2] Bot shows a list of options to work with issues in the from of drop-down list and user can pick 
-         any one of them. Suppose user selects Edit an Issue. User writes "I want to know edit an issue "123" for repository "XYZ" "
+    [S1] User writes "I want to see how to edit an issue".
+    [S2] Bot asks the user to enter owner, repository name and issue ID.
     [S3] Bot will ask the user if he wants to execute the curl command.
     
  4. Alternative Flows
@@ -122,7 +118,8 @@ We will be handling all available Github API endpoints and will be dealing with 
    
 3. Sub Flows
    
-   [S1] User writes "I want to create a repository XYZ".
+   [S1] User writes "I want an example on how to create a repository".
+   [S2] Bot asks the user to enter a repository name.
    [S3] Bot will ask the user if he wants to execute the curl command.
    
 4. Alternative Flows
@@ -131,4 +128,14 @@ We will be handling all available Github API endpoints and will be dealing with 
         and will end the conversation.
 
 </code></pre>
+
+## SELENIUM TESTING
+
+We have tested at least one "happy path" and at least one "alternative path" using Puppeteer for automation testing
+and the code for the same is available in -------.
+
+## MOCKING SERVICE COMPONENT
+
+* To implement mock services and data to support service integration, we have mocked the API calls' return JSON responses to .json files in our project which can be seen in the request_mock.json.
+* The intent.json file consists of examples various user intents which the bot uses to reply to user. 
 
