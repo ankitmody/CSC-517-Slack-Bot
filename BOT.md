@@ -45,8 +45,12 @@ We will be handling all available Github API endpoints and will be dealing with 
     
  4. Alternative Flows
    
-    [E2] User does not select any criteria to perform search, the bot will wait for a fixed time interval 
-         and will end the conversation.
+    [E2] User enters an integer value when Bot asks for query as string for input in which case 
+         the bot will ask for user input again with a message "I think you entered an Integer. 
+         Try giving a string".
+    [E3] User does not provide any input when Bot asks the user if he wants to execute the command
+         in which case the bot will wait for a fixed time interval and will end the conversation with the
+         message "You took longer than I expected".     
        
 </code></pre>
 
@@ -72,8 +76,12 @@ We will be handling all available Github API endpoints and will be dealing with 
    
 4. Alternative Flows
    
-   [E1] User does not provide any input, the bot will wait for a fixed time interval 
-        and will end the conversation.
+   [E2] User enters an integer value when Bot asks for username as string for input in which case 
+        the bot will ask for user input again with a message "I think you entered an Integer. 
+        Try giving a string".
+   [E3] User does not provide any input when Bot asks the user if he wants to execute the command
+        in which case the bot will wait for a fixed time interval and will end the conversation with the
+        message "You took longer than I expected".       
 
 </code></pre>
 
@@ -97,9 +105,13 @@ We will be handling all available Github API endpoints and will be dealing with 
     
  4. Alternative Flows
    
-    [E2] User does not select any criteria to work with issues, the bot will wait for a fixed time interval 
-         and will end the conversation. 
-         
+    [E2] User enters a String value when Bot asks for issue ID as integer for input in which case 
+         the bot will ask for user input again with a message "I think you entered a String. 
+         Try giving an Integer".
+    [E3] User does not provide any input when Bot asks the user if he wants to execute the command
+         in which case the bot will wait for a fixed time interval and will end the conversation with the
+         message "You took longer than I expected".        
+             
 </code></pre>
 
 ### Use Case 4: Example to Create a Respository
@@ -124,8 +136,9 @@ We will be handling all available Github API endpoints and will be dealing with 
    
 4. Alternative Flows
    
-   [E1] User does not provide any input, the bot will wait for a fixed time interval 
-        and will end the conversation.
+   [E3] User does not provide any input when Bot asks the user if he wants to execute the command
+   in which case the bot will wait for a fixed time interval and will end the conversation with the
+   message "You took longer than I expected".
 
 </code></pre>
 
