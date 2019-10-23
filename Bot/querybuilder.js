@@ -1,7 +1,6 @@
 var jsonBuilder = require('./jsonbuilder.js');
 var urlBuilder = require('./urlbuilder.js');
-// const GITHUBTOKEN = process.env.GITHUBTOKEN;
-const GITHUBTOKEN = 'edc765f202ad012d270c7d1161650449127356f0';
+const GITHUBTOKEN = process.env.GITHUBTOKEN;
 
 function queryBuilder(ans, attributeList, url, method, type){
     var data = jsonBuilder.dataJsonBuilder(ans, attributeList);
