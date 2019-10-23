@@ -154,5 +154,5 @@ and the code for the same is available in "test" folder.
 
 ## SCREENCAST
 
-* [ScreenCast for USE CASES, BOT IMPLEMENTATION and SELENIUM TESTING](https://drive.google.com/file/d/10aA4ijimQfBusEO3cFtDC80Jo- LhNkO-/view?usp=sharing)
+ScreenCast link for USE CASES, BOT IMPLEMENTATION and SELENIUM TESTING can be found [here](https://drive.google.com/file/d/10aA4ijimQfBusEO3cFtDC80Jo-LhNkO-/view?usp=sharing)
 
