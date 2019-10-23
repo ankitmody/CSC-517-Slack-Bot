@@ -1,4 +1,4 @@
-## 1. Getting started with Tests
+## TEST
 
 navigate to the test folder. install all npm packages needed using - 
 ```
@@ -30,3 +30,5 @@ npm run test:slack
 ```
 
 chromium opens up, navigates to the Slack sign in page, sign us in and then perform the tests. 
+
+Note - The token mentioned in the test file is a random value. We hardcoded it to match the value used by bot server.
