@@ -8,7 +8,7 @@ This will install all relevant packages including chromium and puppeteer
 
 Next, export  details to log on to slack workspace. We also need a slack bot token.
 ```
-export SLACK_workspace=https://workspacename.slack.com (ex - https://hoomanworkspacegroup.slack.com)
+export SLACK_WORKSPACE=https://workspacename.slack.com (ex - https://hoomanworkspacegroup.slack.com)
 export SLACK_BOT_TOKEN=xoxb-XXXXX
 export SLACK_EMAIL=ENTER_YOUR_NAME
 export SLACK_PASSWORD=ENTER_YOUR_PASSWORD
