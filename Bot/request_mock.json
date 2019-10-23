@@ -1,0 +1,71 @@
+{
+  
+        "search topics":
+         {
+            "method": "GET",
+            "query": "Search for Topics",
+            "params": { "q": { "required": true, "type": "string" } },
+            "url": "/search/topics"
+          },
+    
+
+   
+        "single user":
+         {
+            "method": "GET",
+            "params": { "username": { "required": true, "type": "string" } },
+            "url": "/users/:username"
+         },
+    
+
+   
+        "edit an issue": 
+        {
+            "method": "PATCH",
+            "params": {
+              "assignee": { "type": "string" },
+              "assignees": { "type": "string[]" },
+              "body": { "type": "string" },
+              "issue_number": { "required": true, "type": "integer" },
+              "labels": { "type": "string[]" },
+              "milestone": { "allowNull": true, "type": "integer" },
+              "number": {
+                "alias": "issue_number",
+                "deprecated": true,
+                "type": "integer"
+              },
+              "owner": { "required": true, "type": "string" },
+              "repo": { "required": true, "type": "string" },
+              "state": { "enum": ["open", "closed"], "type": "string" },
+              "title": { "type": "string" }
+            },
+            "url": "/repos/:owner/:repo/issues/:issue_number"
+            
+          
+    },
+
+    
+        "create a repository":
+        {
+            "method": "POST",
+            "params": {
+            "allow_merge_commit": { "type": "boolean" },
+            "allow_rebase_merge": { "type": "boolean" },
+            "allow_squash_merge": { "type": "boolean" },
+            "auto_init": { "type": "boolean" },
+            "description": { "type": "string" },
+            "gitignore_template": { "type": "string" },
+            "has_issues": { "type": "boolean" },
+            "has_projects": { "type": "boolean" },
+            "has_wiki": { "type": "boolean" },
+            "homepage": { "type": "string" },
+            "is_template": { "type": "boolean" },
+            "license_template": { "type": "string" },
+            "name": { "required": true, "type": "string" },
+            "private": { "type": "boolean" },
+            "team_id": { "type": "integer" }
+      },
+      "url": "/user/repos"
+    }
+    
+}
