@@ -6,7 +6,7 @@ Following primary tasks were performed for the purpose of Bot implementation:
 
 - To develop a fully operational platform, we chose Slack platform and created an App within it.
 - To further achieve the purpose, a Bot was created inside the Slack app.
-- We have implemented the basic conversation/interaction with Bot along the lines of our use case and the code for the same can be found under ____ folder.
+- We have implemented the basic conversation/interaction with Bot along the lines of our use case and the code for the same can be found under "BOT" folder.
 
 ## USE CASE REFINEMENT
 
@@ -145,10 +145,14 @@ We will be handling all available Github API endpoints and will be dealing with 
 ## SELENIUM TESTING
 
 We have tested at least one "happy path" and at least one "alternative path" using Puppeteer for automation testing
-and the code for the same is available in -------.
+and the code for the same is available in "test" folder.
 
 ## MOCKING SERVICE COMPONENT
 
 * To implement mock services and data to support service integration, we have mocked the API calls' return JSON responses to .json files in our project which can be seen in the request_mock.json.
 * The intent.json file consists of examples various user intents which the bot uses to reply to user. 
+
+## SCREENCAST
+
+* ![ScreenCast for USE CASES, BOT IMPLEMENTATION and SELENIUM TESTING](https://drive.google.com/file/d/10aA4ijimQfBusEO3cFtDC80Jo-LhNkO-/view?usp=sharing)
 
