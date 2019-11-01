@@ -14,4 +14,17 @@ function queryBuilder(ans, attributeList, url, method, type){
     return(options);
 }
 
+function errorMessageBuilder(text){
+    var replyMessage = {
+        'attachments': [
+          {
+            'text': text,
+            'color': 'danger'
+          }
+        ]
+    };
+    return(replyMessage);
+}
+
 module.exports.queryBuilder = queryBuilder;
+module.exports.errorMessageBuilder = errorMessageBuilder;

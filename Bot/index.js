@@ -25,8 +25,8 @@ controller.spawn({
 controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_message','mention'], function (bot, message) {
 
     var intentResults = intentGathering.intentGathering(message.text);
-    var count = intentResults[1]
-    var intent = intentResults[0] 
+    var count = intentResults[1];
+    var intent = intentResults[0];
     if(count>0){
         var categoriesList = data[intent];
         var params = categoriesList['params'];
@@ -52,27 +52,13 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
                 if (paramKeys[0] === 'required'){
                     convo.ask("Please tell me "+attribute, function(res, convo){
                         if(isNaN(res.text) && type[i]=='integer'){
-                            var replyMessage = {
-                                'attachments': [
-                                  {
-                                    'text': 'I think you entered a string.\nTry giving an Integer',
-                                    'color': 'danger'
-                                  }
-                                ]
-                            }
+                            var replyMessage = queryBuilder.errorMessageBuilder('I think you entered a string.\nTry giving an Integer');
                             bot.reply(message, replyMessage);
                             convo.repeat();
                             convo.next();
                         }
                         else if(isNaN(res.text)==false && type[i]=='string'){
-                            var replyMessage = {
-                                'attachments': [
-                                  {
-                                    'text': 'I think you entered an Integer.\nTry giving a string',
-                                    'color': 'danger'
-                                  }
-                                ]
-                            }
+                            var replyMessage = queryBuilder.errorMessageBuilder('I think you entered an Integer.\nTry giving a string');
                             bot.reply(message, replyMessage);
                             convo.repeat();
                             convo.next();
@@ -108,14 +94,7 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
                         }
                     });
                     convo.onTimeout(function(convo){
-                        var replyMessage = {
-                            'attachments': [
-                              {
-                                'text': 'You took longer than I expected.',
-                                'color': 'danger'
-                              }
-                            ]
-                        }
+                        var replyMessage = queryBuilder.errorMessageBuilder('You took longer than I expected.');
                         bot.reply(message, replyMessage);
                         convo.next();
                     });

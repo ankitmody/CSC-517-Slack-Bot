@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@slack/rtm-api": "^5.0.3",
     "botkit": "^0.6.21",
     "dotenv": "^8.2.0"
   },
