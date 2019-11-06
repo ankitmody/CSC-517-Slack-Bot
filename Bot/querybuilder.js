@@ -1,10 +1,18 @@
 var jsonBuilder = require('./jsonbuilder.js');
 var urlBuilder = require('./urlbuilder.js');
-const GITHUBTOKEN = process.env.GITHUBTOKEN;
+var tokenManager = require('./tokenManager.js')
+// const GITHUBTOKEN = process.env.GITHUBTOKEN;
 
-function queryBuilder(ans, attributeList, url, method, type){
+
+function queryBuilder(ans, attributeList, url, method, type, user = "NOT_DEFINED"){
     var data = jsonBuilder.dataJsonBuilder(ans, attributeList);
     var url = urlBuilder.urlBuilder(data, url);
+    if(user == "NOT_DEFINED"){
+        var GITHUBTOKEN = process.env.GITHUBTOKEN;
+    }
+    else{
+        var GITHUBTOKEN = tokenManager.getUserToken(user);
+    }
     if(type){
         var options = {'url': url, 'method': method, 'headers':{"Authorization": `token ${GITHUBTOKEN}`}, 'json':data};
     }

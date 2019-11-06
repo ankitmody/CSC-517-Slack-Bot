@@ -3,6 +3,7 @@ var data = require("./request_mock.json");
 var request = require('request');
 var intentGathering = require('./intentgathering.js');
 var queryBuilder = require('./querybuilder.js');
+var tokenManager = require('./tokenManager.js')
 
 const SLACK_TOKEN = process.env.SLACK_TOKEN_USER;
 const clientId = process.env.CLIENT_ID;
@@ -47,6 +48,18 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
         }
 
         bot.startConversation(message, function(err, convo) {
+            console.log(message)
+            if (!tokenManager.userTokenExists(message.user)){
+                convo.ask(tokenManager.askForTokenMessage(), function(res, convo){
+                    tokenManager.storeUserToken(message.user,res.text);
+                    bot.reply(message, "Stored your Github Access Token, Let me process your request.");
+                    convo.next();
+                });
+                            
+            }
+            else{
+                console.log(message.user, tokenManager.getUserToken(message.user));
+            }
             for (var attribute in params){
                 var paramKeys = Object.keys(params[attribute]);
                 if (paramKeys[0] === 'required'){
@@ -68,7 +81,7 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
                             convo.next();
                             i += 1;
                             if(ans.length == attributeList.length){
-                                var command = queryBuilder.queryBuilder(ans, attributeList, url, method, false);
+                                var command = queryBuilder.queryBuilder(ans, attributeList, url, method, false, message.user);
                                 console.log(command);
                                 var results = queryBuilder.queryBuilder(ans, attributeList, url, method, true);
                                 bot.reply(message, command);
