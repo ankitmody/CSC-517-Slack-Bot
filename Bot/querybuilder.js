@@ -6,10 +6,18 @@ function queryBuilder(ans, attributeList, url, method, type){
     var data = jsonBuilder.dataJsonBuilder(ans, attributeList);
     var url = urlBuilder.urlBuilder(data, url);
     if(type){
-        var options = {'url': url, 'method': method, 'headers':{"Authorization": `token ${GITHUBTOKEN}`}, 'json':data};
+        var options = {
+            'url': url, 
+            'method': method, 
+            'headers':
+            {
+                "Authorization": 
+                `token ${GITHUBTOKEN}`}, 
+                'json':data
+            };
     }
     else{
-        var options = `\`curl --request `+method+` -H "Authorization: token `+GITHUBTOKEN+`" -d '`+ JSON.stringify(data) +`' `+url+`\``;
+        var options = `\`curl --request `+ method +` -H "Authorization: token `+ GITHUBTOKEN +`" -d '`+ JSON.stringify(data) + `' ` + url + `\``;
     }
     return(options);
 }
