@@ -68,7 +68,7 @@ Tasks Identified:
      
   * **Corollary Practices**
   
-     * Single Code Base: For continuous integration, maintaining a single code base is important. Branches can exist for sometime, but should be brought together through frequent integrations.
+     * Single Code Base: For continuous integration, maintaining a single code base is important. Branches can exist for sometime, but should be brought together through frequent integrations. Initially, we were working individually and therefore had multiple branches but we merged them all to have a single code base.
      
      * Shared code: Having worked on the project since the beginning of the semester, there is now a sense of collective responsibility, anyone on the team can improve any part of the sytem at any time. The pre-requisite to apply this practice was adoption of teamwide coding practices.
      
@@ -81,4 +81,7 @@ Tasks Identified:
  
  ## Scrum Meeting Notes/Process Notes
  
+ ![](Screenshots/Notes1.jpg)
+ ![](Screenshots/Notes2.jpg)
+ ![](Screenshots/Notes3.jpg)
  
