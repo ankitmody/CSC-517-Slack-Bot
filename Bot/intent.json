@@ -1,40 +1,48 @@
 {
-    "create a repository": {
-        "expressions": [
-            "creating repo",
-            "creating repository",
-            "create repo",
-            "create repository",
-            "create repositories",
-            "creating repositories"
-        ]
+    "repos": {
+        "create a repository": {
+            "expressions": [
+                "creating repo",
+                "creating repository",
+                "create repo",
+                "create repository",
+                "create repositories",
+                "creating repositories"
+            ]
+        }
     },
-    "search topics": {
-        "expressions": [
-            "search topic",
-            "searching topic",
-            "searching topics",
-            "search topics",
-            "searches topic",
-            "searches topics"
-        ]
+    "search": {
+        "topics":{
+            "expressions": [
+                "search topic",
+                "searching topic",
+                "searching topics",
+                "search topics",
+                "searches topic",
+                "searches topics"
+            ]
+        }
     },
-    "edit an issue": {
-        "expressions": [
-            "edit issue",
-            "edit issues",
-            "editing issue",
-            "editing issues",
-            "edit an issue"
-        ]
+    "issues": {
+        "edit": {
+            "expressions": [
+                "edit issue",
+                "edit issues",
+                "editing issue",
+                "editing issues",
+                "edit an issue"
+            ]
+        }
     },
-    "single user": {
-        "expressions": [
-            "single user",
-            "information single user",
-            "info single user",
-            "info user",
-            "information user"
-        ]
+    "users":{
+        "getByUsername": {
+            "expressions": [
+                "single user",
+                "information single user",
+                "info single user",
+                "info user",
+                "information user"
+            ]
+        }
     }
 }
