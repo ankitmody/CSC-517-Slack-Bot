@@ -15,13 +15,13 @@ We developed our software in 2 short iterations:
 * Once the stories were defined, we created tasks and assigned them equally among all the members.
 Tasks Identified:
 
-  * Web crawler
-  * Database Interaction
-  * Error message builder
-  * QueryBuilder Logic
-  * Refining interactions with user
-  * Refining intent gathering
-  * Logic for getting user token
+  - [ ] Web crawler
+  - [ ] Database Interaction
+  - [ ] Error message builder
+  - [ ] QueryBuilder Logic
+  - [ ] Refining interactions with user
+  - [ ] Refining intent gathering
+  - [ ] Logic for getting user token
  
  At the initial stage of Sprint 1, Kanban board looked like this:
 
@@ -30,12 +30,29 @@ Tasks Identified:
   2. Sat Nov 2--Fri Nov 8th
   
   * At the beginning of Sprint 2, tasks for Sprint 1 were already completed and others were still in process.
+  - [x] Web crawler
+  - [ ] Database Interaction
+  - [x] Error message builder
+  - [ ] QueryBuilder Logic
+  - [ ] Refining interactions with user
+  - [ ] Refining intent gathering
+  - [ ] Logic for getting user token
   
   ![](Screenshots/KanbanBoardSprint2.png "Kanban Board at Sprint 2")
   
   * After the completion of both the iterations, the tasks completed were marked "Done".
+  - [x] Web crawler
+  - [x] Database Interaction
+  - [x] Error message builder
+  - [x] QueryBuilder Logic
+  - [x] Refining interactions with user
+  - [x] Refining intent gathering
+  - [x] Logic for getting user token
   
   ![](Screenshots/KanbanBoardFinal.png "Kanban Board after Sprint 2")
+  
+  
+  Link to Project Board Cards is [here](https://github.ncsu.edu/csc510-fall2019/CSC510-17/projects/2).
   
   ## Practices
   
@@ -54,3 +71,14 @@ Tasks Identified:
      * Single Code Base: For continuous integration, maintaining a single code base is important. Branches can exist for sometime, but should be brought together through frequent integrations.
      
      * Shared code: Having worked on the project since the beginning of the semester, there is now a sense of collective responsibility, anyone on the team can improve any part of the sytem at any time. The pre-requisite to apply this practice was adoption of teamwide coding practices.
+     
+ ## Consistency
+ 
+ * All the stories/tasks were decided at the beginning of first iteration.
+ * Tasks were divided uniformly among all the 4 team members.
+ * The work required to accomplish the tasks was done consistently over the entire duration of iterations.
+ * Once the tasks were completed as planned, they were moved to "Done".
+ 
+ ## Scrum Meeting Notes/Process Notes
+ 
+ 
