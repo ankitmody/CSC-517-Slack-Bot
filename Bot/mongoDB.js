@@ -22,6 +22,7 @@ async function search(collectionName, intent) {
                 });
             }
             client.close();
+
         });
     });
     let results = await promise
