@@ -130,22 +130,22 @@ The bot will provide curl commands to the user which he can execute on his termi
 
 ### Storyboard
 
-![](/Storyboard1.png)
-![](/Storyboard2.png)
+![](Screenshots/Storyboard1.png)
+![](Screenshots/Storyboard2.png)
 
 ### Wireframe 1: Create a repo
 
-<img src="Wireframe1.gif" align="center">
+<img src="Screenshots/Wireframe1.gif" align="center">
 
 ### Wireframe 2: Edit an issue
 
-<img src="Wireframe2.gif" align="center">
+<img src="Screenshots/Wireframe2.gif" align="center">
 
 ## Architecture Design
 
 ### Architecture Design Diagram
 
-![Architecture Diagram](/ArchitectureDiagram.png)
+![Architecture Diagram](/Screenshots/ArchitectureDiagram.png)
 
 ### Architecture Components
 
@@ -161,7 +161,7 @@ We will be using Slack Server to deploy the GitHubYodaBot. The main components o
 
 **5. Bot Engine:** Bot Engine is an intelligent engine that interprets user inputs to automate and fulfil his requirements. The bot will query the database to get the generic API request that was scrapped by web crawler and stored in the database. It will then develop a customized request based on the answers given by user and return it to user via Slack. The same will also be updated to the Database if it is absent/modified. It will also provide the user with an option to execute the command on his behalf. 
 
-![BotEngine](/BotEngine.png)
+![BotEngine](/Screenshots/BotEngine.png)
 
 #### Bot Engine Design
 
