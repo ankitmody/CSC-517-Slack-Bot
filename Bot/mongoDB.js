@@ -6,7 +6,7 @@ async function search(collectionName, intent) {
     let promise = new Promise((resolve) => {
         client.connect(err => {
             if (intent) {
-                collection = client.db("GithubYoda").collection("intent");
+                collection = client.db("GithubYoda").collection("githubData");
                 collection.find().toArray(function (err, docs) {
                     // console.log("retrieved records:");
                     if (!err) resolve(docs);
@@ -15,7 +15,7 @@ async function search(collectionName, intent) {
             else {
                 var qry = {};
                 qry[collectionName] = { $type: 3 };
-                collection = client.db("GithubYoda").collection("testJSON");
+                collection = client.db("GithubYoda").collection("githubData");
                 collection.find(qry).toArray(function (err, docs) {
                     // console.log("retrieved records:");
                     if (!err) resolve(docs);
