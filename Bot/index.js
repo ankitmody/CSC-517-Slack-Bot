@@ -33,10 +33,12 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
     intentGathering.listActions(lookUpKey).then(function(intentResults){
         bot.startConversation(message, function(err, convo){
             convo.ask("Please choose one of the following actions\n"+intentResults[0], function(res, convo){
-                var intent = res.text;
+                var userReply = res.text;
                 lookUpKey = intentResults[1];
+                var keyMapping = intentResults[2];
+                var intent = keyMapping[userReply];
                 convo.next();
-                if(intent == 'never mind'){
+                if(userReply === 'never mind'){
                     bot.reply(message, "No problem.\nRemember I am always hearing");
                     convo.stop();
                 }
@@ -44,7 +46,7 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
                     db.search(lookUpKey, false).then(function(results){
                         var categoriesList = results[0][lookUpKey][intent];
                     
-                        if(categoriesList!= undefined){
+                        if(categoriesList!=undefined){
                             var params = categoriesList['params'];
                             var method = categoriesList['method'];
                             var endpoint = categoriesList['url'];
@@ -70,7 +72,7 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
                                                 bot.reply(message, "No problem.\nRemember I am always hearing");
                                                 convo.stop();
                                             }
-                                            if(isNaN(res.text) && type[i]=='integer'){
+                                            else if(isNaN(res.text) && type[i]=='integer'){
                                                 var replyMessage = queryBuilder.errorMessageBuilder('I think you entered a string.\nTry giving an Integer');
                                                 bot.reply(message, replyMessage);
                                                 convo.repeat();

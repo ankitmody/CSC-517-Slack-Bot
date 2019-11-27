@@ -1,5 +1,10 @@
 var db = require('./mongoDB.js');
 
+function splitAndLowerCase(input){
+    var toArray = input.split(/(?=[A-Z])/);
+    return toArray.join(' ').toLowerCase();
+}
+
 async function listActions(inputMessage){
     let promise = new Promise((resolve)=>{
         var commonCount = [];
@@ -12,12 +17,16 @@ async function listActions(inputMessage){
             }
 
             var actions = "";
+            var mappingObject = {};
             if(commonCount.length>0){
                 db.search(commonCount[0], false).then(function(intentData){
                     for(var k in Object.keys(intentData[0][commonCount[0]])){
-                        actions += Object.keys(intentData[0][commonCount[0]])[k]+'\n';
+                        var cleanedKey= splitAndLowerCase(Object.keys(intentData[0][commonCount[0]])[k]);
+                        actions += cleanedKey +'\n';
+                        mappingObject[cleanedKey] = Object.keys(intentData[0][commonCount[0]])[k];
                     }
-                    resolve([actions, commonCount[0]]);
+                    actions += 'You can also stop me from executing by saying never mind.'
+                    resolve([actions, commonCount[0], mappingObject]);
                 });
             }
         });
