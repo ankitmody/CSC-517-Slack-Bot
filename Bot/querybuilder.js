@@ -14,15 +14,26 @@ function queryBuilder(ans, attributeList, url, method, type){
     return(options);
 }
 
-function errorMessageBuilder(text){
-    var replyMessage = {
-        'attachments': [
-          {
-            'text': text,
-            'color': 'danger'
-          }
-        ]
-    };
+function errorMessageBuilder(text, error){
+    if(error){
+        var replyMessage = {
+            'attachments': [
+            {
+                'text': text,
+                'color': 'danger'
+            }
+            ]
+        };
+    }
+    else{
+        var replyMessage = {
+            'attachments': [
+                {
+                    'text': text                
+                }
+                ]
+        };
+    }
     return(replyMessage);
 }
 

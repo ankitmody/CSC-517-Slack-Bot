@@ -32,7 +32,8 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
     var lookUpKey = message.text.toLowerCase();
     intentGathering.listActions(lookUpKey).then(function(intentResults){
         bot.startConversation(message, function(err, convo){
-            convo.ask("Please choose one of the following actions\n"+intentResults[0], function(res, convo){
+            var replyMessage = queryBuilder.errorMessageBuilder("Please choose one of the following actions\n"+intentResults[0], false)
+            convo.ask(replyMessage, function(res, convo){
                 var userReply = res.text;
                 lookUpKey = intentResults[1];
                 var keyMapping = intentResults[2];
@@ -73,13 +74,13 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
                                                 convo.stop();
                                             }
                                             else if(isNaN(res.text) && type[i]=='integer'){
-                                                var replyMessage = queryBuilder.errorMessageBuilder('I think you entered a string.\nTry giving an Integer');
+                                                var replyMessage = queryBuilder.errorMessageBuilder('I think you entered a string.\nTry giving an Integer', true);
                                                 bot.reply(message, replyMessage);
                                                 convo.repeat();
                                                 convo.next();
                                             }
                                             else if(isNaN(res.text)==false && type[i]=='string' || isValid(res.text)==false){
-                                                var replyMessage = queryBuilder.errorMessageBuilder('I think you entered an Integer.\nTry giving a string');
+                                                var replyMessage = queryBuilder.errorMessageBuilder('I think you entered an Integer.\nTry giving a string', true);
                                                 bot.reply(message, replyMessage);
                                                 convo.repeat();
                                                 convo.next();

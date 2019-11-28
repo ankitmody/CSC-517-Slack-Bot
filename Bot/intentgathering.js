@@ -16,7 +16,7 @@ async function listActions(inputMessage){
                 }
             }
 
-            var actions = "";
+            var actions = "You can also stop me from executing by saying never mind.\n";
             var mappingObject = {};
             if(commonCount.length>0){
                 db.search(commonCount[0], false).then(function(intentData){
@@ -25,7 +25,6 @@ async function listActions(inputMessage){
                         actions += cleanedKey +'\n';
                         mappingObject[cleanedKey] = Object.keys(intentData[0][commonCount[0]])[k];
                     }
-                    actions += 'You can also stop me from executing by saying never mind.'
                     resolve([actions, commonCount[0], mappingObject]);
                 });
             }
