@@ -37,7 +37,13 @@ controller.hears(['keyword', '[\s\S]*'], ['ambient', 'direct_mention', 'direct_m
                 var userReply = res.text;
                 lookUpKey = intentResults[1];
                 var keyMapping = intentResults[2];
-                var intent = keyMapping[userReply];
+                var numericMapping = intentResults[3];
+                if(keyMapping[userReply]!=undefined){
+                    var intent = keyMapping[userReply]
+                }
+                else{
+                    var intent = numericMapping[userReply];
+                }
                 convo.next();
                 if(userReply === 'never mind'){
                     bot.reply(message, "No problem.\nRemember I am always hearing");

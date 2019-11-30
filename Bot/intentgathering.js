@@ -18,14 +18,16 @@ async function listActions(inputMessage){
 
             var actions = "You can also stop me from executing by saying never mind.\n";
             var mappingObject = {};
+            var numericMapping = {};
             if(commonCount.length>0){
                 db.search(commonCount[0], false).then(function(intentData){
                     for(var k in Object.keys(intentData[0][commonCount[0]])){
                         var cleanedKey= splitAndLowerCase(Object.keys(intentData[0][commonCount[0]])[k]);
-                        actions += cleanedKey +'\n';
+                        actions += String(parseInt(k, 10)+1) + ') ' + cleanedKey +'\n';
                         mappingObject[cleanedKey] = Object.keys(intentData[0][commonCount[0]])[k];
+                        numericMapping[String(parseInt(k, 10)+1)] = Object.keys(intentData[0][commonCount[0]])[k];
                     }
-                    resolve([actions, commonCount[0], mappingObject]);
+                    resolve([actions, commonCount[0], mappingObject, numericMapping]);
                 });
             }
         });
