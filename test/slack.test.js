@@ -35,24 +35,32 @@ describe('Slack Test', () => {
     // data-qa-presence-active="false"
 
     // Click on Bot in side bar
-    //await page.waitForSelector(`a[data-qa-channel-sidebar-channel-id="${process.env.SLACK_BOT_CHANNEL}"]`, { timeout: TIMEOUT });
-    //await expect(page).toClick(`a[data-qa-channel-sidebar-channel-id="${process.env.SLACK_BOT_CHANNEL}"]`, { timeout: TIMEOUT });
+    await page.waitForSelector(`a[data-qa-channel-sidebar-channel-id="${process.env.SLACK_BOT_CHANNEL}"]`, { timeout: TIMEOUT });
+    await expect(page).toClick(`a[data-qa-channel-sidebar-channel-id="${process.env.SLACK_BOT_CHANNEL}"]`, { timeout: TIMEOUT });
 
     // Verify Page Title
-    //expect(await page.title()).toContain('Slack');
+    expect(await page.title()).toContain('Slack');
   }, TIMEOUT);
 
   it('Should be able to construct an example for create repo-Happy Path', async () => {
     // ask for example for create repo
     await page.waitForSelector(`div[data-qa="message_input"]`, { timeout: TIMEOUT });
-    await expect(page).toFill('div[data-qa="message_input"]', 'create a repo', { timeout: TIMEOUT });
+    await expect(page).toFill('div[data-qa="message_input"]', 'repos', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
 
     await page.waitFor(waitForProcessing);
-    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
+    
+    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__attachments'), e => e.textContent));
+
+    expect(messages.pop()).toBe("Please choose one of the following actionsYou can also stop me from executing by saying never mind.1) accept invitation2) add collaborator3) add deploy key Show more");
+   
+    await expect(page).toFill('div[data-qa="message_input"]', '18', { timeout: TIMEOUT });
+    await page.keyboard.press('Enter');
+    
+    await page.waitFor(waitForProcessing);
+    messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
     expect(messages.pop()).toBe('Please tell me name')
-
 
     await expect(page).toFill('div[data-qa="message_input"]', 'testrepo', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
@@ -81,12 +89,20 @@ describe('Slack Test', () => {
 
   it('Should be able to construct an example for create repo-Alternative Path', async () => {
     // ask for example for create repo
-    await page.waitForSelector(`div[data-qa="message_input"]`, { timeout: TIMEOUT });
-    await expect(page).toFill('div[data-qa="message_input"]', 'create a repo', { timeout: TIMEOUT });
+    await expect(page).toFill('div[data-qa="message_input"]', 'repos', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
 
     await page.waitFor(waitForProcessing);
-    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
+    
+    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__attachments'), e => e.textContent));
+
+    expect(messages.pop()).toBe("Please choose one of the following actionsYou can also stop me from executing by saying never mind.1) accept invitation2) add collaborator3) add deploy key Show more");
+   
+    await expect(page).toFill('div[data-qa="message_input"]', '18', { timeout: TIMEOUT });
+    await page.keyboard.press('Enter');
+    
+    await page.waitFor(waitForProcessing);
+    messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
     expect(messages.pop()).toBe('Please tell me name')
 
@@ -117,12 +133,20 @@ describe('Slack Test', () => {
   it('Should be able to construct an example for search topics: Happy Path', async () => {
     // example for search topics
     await page.waitForSelector(`div[data-qa="message_input"]`, { timeout: TIMEOUT });
-    await expect(page).toFill('div[data-qa="message_input"]', 'searching topics', { timeout: TIMEOUT });
+    await expect(page).toFill('div[data-qa="message_input"]', 'search', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
-    // await page.keyboard.press('Enter');
 
     await page.waitFor(waitForProcessing);
-    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
+    
+    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__attachments'), e => e.textContent));
+
+    expect(messages.pop()).toBe("Please choose one of the following actionsYou can also stop me from executing by saying never mind.1) code2) commits3) issues Show more");
+   
+    await expect(page).toFill('div[data-qa="message_input"]', '7', { timeout: TIMEOUT });
+    await page.keyboard.press('Enter');
+    
+    await page.waitFor(waitForProcessing);
+    messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
     expect(messages.pop()).toBe('Please tell me q')
 
@@ -152,12 +176,20 @@ describe('Slack Test', () => {
   it('Should be able to construct an example for search topics: Alternative Path', async () => {
     // example for search topics alternative path
     await page.waitForSelector(`div[data-qa="message_input"]`, { timeout: TIMEOUT });
-    await expect(page).toFill('div[data-qa="message_input"]', 'searching topics', { timeout: TIMEOUT });
+    await expect(page).toFill('div[data-qa="message_input"]', 'search', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
-    // await page.keyboard.press('Enter');
 
     await page.waitFor(waitForProcessing);
-    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
+    
+    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__attachments'), e => e.textContent));
+
+    expect(messages.pop()).toBe("Please choose one of the following actionsYou can also stop me from executing by saying never mind.1) code2) commits3) issues Show more");
+   
+    await expect(page).toFill('div[data-qa="message_input"]', '7', { timeout: TIMEOUT });
+    await page.keyboard.press('Enter');
+    
+    await page.waitFor(waitForProcessing);
+    messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
     expect(messages.pop()).toBe('Please tell me q')
 
@@ -197,15 +229,22 @@ describe('Slack Test', () => {
     await page.waitFor(2000);
   });
 
-
   it('Should be able to construct an example for edit an issue topics:Happy Path', async () => {
-    // example for search topics
-    await expect(page).toFill('div[data-qa="message_input"]', 'editing issues', { timeout: TIMEOUT });
+    // example for edit issue
+    await expect(page).toFill('div[data-qa="message_input"]', 'issues', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
-    // await page.keyboard.press('Enter');
 
     await page.waitFor(waitForProcessing);
-    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
+    
+    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__attachments'), e => e.textContent));
+
+    expect(messages.pop()).toBe("Please choose one of the following actionsYou can also stop me from executing by saying never mind.1) add assignees2) add labels3) check assignee Show more");
+   
+    await expect(page).toFill('div[data-qa="message_input"]', '36', { timeout: TIMEOUT });
+    await page.keyboard.press('Enter');
+    
+    await page.waitFor(waitForProcessing);
+    messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
     expect(messages.pop()).toBe('Please tell me issue_number')
 
@@ -259,12 +298,20 @@ describe('Slack Test', () => {
 
   it('Should be able to construct an example for edit an issue topics:Alternative Path', async () => {
     // example for search topics
-    await expect(page).toFill('div[data-qa="message_input"]', 'editing issues', { timeout: TIMEOUT });
+    await expect(page).toFill('div[data-qa="message_input"]', 'issues', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
-    // await page.keyboard.press('Enter');
 
     await page.waitFor(waitForProcessing);
-    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
+    
+    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__attachments'), e => e.textContent));
+
+    expect(messages.pop()).toBe("Please choose one of the following actionsYou can also stop me from executing by saying never mind.1) add assignees2) add labels3) check assignee Show more");
+   
+    await expect(page).toFill('div[data-qa="message_input"]', '36', { timeout: TIMEOUT });
+    await page.keyboard.press('Enter');
+    
+    await page.waitFor(waitForProcessing);
+    messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
 
     expect(messages.pop()).toBe('Please tell me issue_number')
@@ -329,14 +376,20 @@ describe('Slack Test', () => {
     await page.waitFor(2000);
   });
 
-
-
-
   it('Should be able to construct an example for getting info about an user: Happy Path', async () => {
     // ask for example for user info
-    await expect(page).toFill('div[data-qa="message_input"]', 'information about user', { timeout: TIMEOUT });
+    await expect(page).toFill('div[data-qa="message_input"]', 'users', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
 
+    await page.waitFor(waitForProcessing);
+    
+    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__attachments'), e => e.textContent));
+
+    expect(messages.pop()).toBe("Please choose one of the following actionsYou can also stop me from executing by saying never mind.1) add emails2) block3) check blocked Show more");
+   
+    await expect(page).toFill('div[data-qa="message_input"]', '13', { timeout: TIMEOUT });
+    await page.keyboard.press('Enter');
+    
     await page.waitFor(waitForProcessing);
     messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
@@ -367,9 +420,19 @@ describe('Slack Test', () => {
 
   it('Should be able to construct an example for getting info about an user:Alternative Path', async () => {
     // ask for example for user info
-    await expect(page).toFill('div[data-qa="message_input"]', 'information about user', { timeout: TIMEOUT });
+    await page.waitForSelector(`div[data-qa="message_input"]`, { timeout: TIMEOUT });
+    await expect(page).toFill('div[data-qa="message_input"]', 'users', { timeout: TIMEOUT });
     await page.keyboard.press('Enter');
 
+    await page.waitFor(waitForProcessing);
+    
+    let messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__attachments'), e => e.textContent));
+
+    expect(messages.pop()).toContain("Please choose one of the following actionsYou can also stop me from executing by saying never mind.1) add emails2) block3) check blocked Show more");
+   
+    await expect(page).toFill('div[data-qa="message_input"]', '13', { timeout: TIMEOUT });
+    await page.keyboard.press('Enter');
+    
     await page.waitFor(waitForProcessing);
     messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
@@ -383,7 +446,7 @@ describe('Slack Test', () => {
 
     messages = await page.evaluate(() => Array.from(document.getElementsByClassName('c-message__body'), e => e.textContent));
 
-    expect(messages.pop()).toBe('Would you like me to run the command for you')
+    expect(messages.pop()).toContain('Would you like me to run the command for you')
     expect(messages[messages.length - 1]).toBe(requestReply)
 
 
