@@ -29,20 +29,22 @@ The bot will provide curl commands to the user which he can execute on his termi
     [S1] User will request for an example to perform search in Github. 
     [S2] Bot will provide possible pre-defined options for "search": repositories, commits, code, 
          users, topics, labels, issues, pull requests
-    [S3] Bot will return a curl command example to search based on query input.        
-    [S4] Bot will perform search on topic.
+    [S3] Bot will gather required parameters for the request.
+    [S4] Bot will return a curl command example to search based on query input.        
+    [S5] Bot will perform search on topic.
     
  3. Subflows
     
     [S1] User writes "I want to see an example for search".
-    [S2] Bot shows a list of options to perform search in the from of drop-down list and user can pick 
-         any one of them. Suppose user selects Search based on Topics.
-    [S3] Bot will ask the user if he wants to execute the curl command.
+    [S2] User selects Search based on Topics.
+    [S4] Bot will ask the user if he wants to execute the curl command.
     
  4. Alternative Flows
    
     [E2] User does not select any criteria to perform search, the bot will wait for a fixed time interval 
          and will end the conversation.
+    [E3] User responds with wrong data type for a parameter. The bot will ask for the input to be of the 
+         correct data type
        
 </code></pre>
 
@@ -56,19 +58,24 @@ The bot will provide curl commands to the user which he can execute on his termi
 2. Main Flow
    User will request an example for publicly available information of a user 
    
-   [S1] User will request for an example to get details of a user on Github. 
-   [S2] Bot will return a curl command example to get user information on query input.        
-   [S3] Bot will display the user.
+   [S1] User will request for examples related to users.
+   [S2] Bot shows a list of options to perform for users in the from of a list.
+   [S3] Bot will gather required parameters for the request.
+   [S4] Bot will return a curl command example to get user information on query input.        
+   [S5] Bot will display the user info.
    
 3. Sub Flows
    
-   [S1] User writes "I want to know about user XYZ".
-   [S3] Bot will ask the user if he wants to execute the curl command.
+   [S1] User writes "users".
+   [S2] User selects get details of user.
+   [S4] Bot will ask the user if he wants to execute the curl command.
    
 4. Alternative Flows
    
    [E1] User does not provide any input, the bot will wait for a fixed time interval 
         and will end the conversation.
+   [E3] User responds with wrong data type for a parameter. The bot will ask for the input to be of the 
+        correct data type
 
 </code></pre>
 
@@ -83,19 +90,21 @@ The bot will provide curl commands to the user which he can execute on his termi
     
     [S1] User will request for an example to work with iusses in Github. 
     [S2] Bot will provide possible pre-defined options for "issues": list, get, create, edit, lock an issue.
-    [S3] Bot will return a curl command example to edit an issue based on query input.        
-    [S4] Bot will edit the issue.
+    [S3] Bot will gather required parameters for the request.
+    [S4] Bot will return a curl command example to edit an issue based on query input.        
+    [S5] Bot will edit the issue.
     
  3. Subflows
-    [S1] User writes "I want to work with issues".
-    [S2] Bot shows a list of options to work with issues in the from of drop-down list and user can pick 
-         any one of them. Suppose user selects Edit an Issue. User writes "I want to know edit an issue "123" for repository "XYZ" "
-    [S3] Bot will ask the user if he wants to execute the curl command.
+    [S1] User writes "issues".
+    [S2] User selects Edit an Issue.User responds with "123" for issue id and "XYZ" for repo name
+    [S4] Bot will ask the user if he wants to execute the curl command.
     
  4. Alternative Flows
    
     [E2] User does not select any criteria to work with issues, the bot will wait for a fixed time interval 
-         and will end the conversation. 
+         and will end the conversation.
+    [E3] User responds with wrong data type for a parameter. The bot will ask for the input to be of the 
+        correct data type
          
 </code></pre>
 
@@ -109,20 +118,23 @@ The bot will provide curl commands to the user which he can execute on his termi
 2. Main Flow
    User will request an example to create a repository
    
-   [S1] User will request for an example to create a repository on Github. 
-   [S2] Bot will return a curl command example to create a repository based on query input.        
-   [S3] Bot will create a repository.
+   [S1] User will request for an example to work with repos on Github.
+   [S2] Bot will provide possible pre-defined options for "repos": add colaborators, create a repo, list repos,etc.
+   [S3] Bot will gather required parameters for the request.
+   [S4] Bot will return a curl command example to create a repository based on query input.        
+   [S5] Bot will create a repository.
    
 3. Sub Flows
    
-   [S1] User writes "I want to create a repository XYZ".
-   [S3] Bot will ask the user if he wants to execute the curl command.
+   [S1] User writes "repos".
+   [S4] Bot will ask the user if he wants to execute the curl command.
    
 4. Alternative Flows
    
    [E1] User does not provide any input, the bot will wait for a fixed time interval 
         and will end the conversation.
-
+   [E3] User responds with wrong data type for a parameter. The bot will ask for the input to be of the 
+        correct data type
 </code></pre>
 
 
