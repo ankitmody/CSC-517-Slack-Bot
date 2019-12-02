@@ -1,0 +1,123 @@
+- name: Provision an EC2 instance
+  hosts: localhost
+  gather_facts: False
+  user: ubuntu
+  vars:
+    keypair: id_rsa            
+    instance_type: t2.micro
+    security_group: Bot_Grp
+    image: ami-0d5d9d301c853a04a
+    region: us-east-2
+    group_name: GithubYodaBot
+  tasks:
+
+    - name : Install pip
+      apt: pkg=python-pip update_cache=yes state=present
+      become: true
+
+    - name: Install boto and boto3
+      pip:
+        name: "{{ item }}"
+      with_items:
+        - boto
+        - boto3
+    
+    - name: Security Group
+      ec2_group: 
+        name: "{{ security_group }}"
+        description: Allow traffic on port 22 and 80
+        region: us-east-2
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+        rules_egress:
+          - proto: all
+            cidr_ip: 0.0.0.0/0
+
+    - name: Launch instance
+      ec2:
+        aws_access_key: # <<AWS_ACCESS_KEY>> goes here
+        aws_secret_key: # <<AWS_SECRET_KEY>> goes here
+        key_name: "{{ keypair }}"
+        group: "{{ security_group }}"
+        instance_type: "{{ instance_type }}"
+        image: "{{ image }}"
+        wait: yes
+        wait_timeout: 500
+        count: 1
+        region: "{{ region }}"
+        assign_public_ip: yes
+        vpc_subnet_id: subnet-842ccdef
+        instance_tags:
+          Name: "{{ group_name }}"
+      register: ec2
+
+    - name: Add instance to inventory
+      local_action: lineinfile dest="/vagrant/hosts" regexp="{{ item.public_ip }}" insertafter="\[launched\]" line="{{ item.public_ip }} ansible_user=ubuntu ansible_ssh_user=ubuntu ansible_ssh_private_key_file=~/.ssh/{{ keypair }}.pem"
+      with_items: '{{ ec2.instances }}'
+
+    - name: Wait for SSH to come up
+      local_action: wait_for host={{ item.public_ip }} port=22 delay=60 timeout=320 state=started
+      with_items: '{{ ec2.instances }}'
+
+    - meta: refresh_inventory
+
+- name: Configure EC2 server instance
+  hosts: launched
+  become: yes
+  become_user: root
+  gather_facts: True
+  vars_prompt:
+    - name: "githubuser"
+      prompt: "Enter your github username"
+      private: no
+    - name: "githubpassword"
+      prompt: "Enter your github password"
+      private: yes
+  tasks:
+    - name: Transfer the script
+      copy: src=environment_setup.sh dest=/home mode=0777
+      
+    - name: Install the gpg key for nodejs LTS
+      apt_key:
+        url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+        state: present
+
+    - name: Install the nodejs LTS repos
+      apt_repository:
+        repo: "deb https://deb.nodesource.com/node_10.x xenial main"
+        state: present
+        update_cache: yes
+
+    - name: Install the nodejs
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Installing forever js
+      shell: npm install -g forever
+
+    - name: Installing git
+      apt:
+        name: git
+        state: latest
+        update_cache: true
+
+    - name: Cloning Git Repo
+      git: repo=https://{{ githubuser }}:{{ githubpassword | urlencode }}@github.ncsu.edu/csc510-fall2019/CSC510-17.git dest=/home/ubuntu/Project version=Bot_with_updated_use_cases
+
+    - name: Running NPM install
+      npm:
+        path: /home/ubuntu/Project/Bot
+
+    - name: Configure environment variables and run the Forever App
+      shell: . /home/environment_setup.sh
+        
+    - name: Deleting files from temp directory
+      file: path=/tmp/* state=absent
