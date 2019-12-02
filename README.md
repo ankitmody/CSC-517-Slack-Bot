@@ -22,4 +22,9 @@ Link to BOT.md is [here](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/
 
 Link to PROCESS.md is [here](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/PROCESS.md)
 
+## DEPLOY
+
+Link to DEPLOY.md is [here](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/DEPLOY.md)
+
+
 
