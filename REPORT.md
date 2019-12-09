@@ -18,7 +18,7 @@
 * Milestone 5: [REPORT]
 
 ## Project Presentation
-[Screencast] ()
+[Screencast] (https://drive.google.com/file/d/1qydGR8Ud_nOV2_7krKXkIE9X32Gtf9lS/view)
 
 # REPORT
 
@@ -42,10 +42,16 @@ The bot has three main features:
 ## Screenshots
 
 # Screenshot-1
+![Task 1](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/Screenshots/Report_Task1.png)
 
 # Screenshot-2
+![Task 2](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/Screenshots/Report_Task2.png)
 
 # Screenshot-3
+![Task 3](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/Screenshots/Report_Task3.png)
+
+# Screenshot-4
+![Task 4](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/Screenshots/Report_Task4.png)
 
 ## 3. Our reflection on the bot development process 
 
@@ -67,4 +73,8 @@ For all four of us, it was great journey with lots of opportunities to learn dur
 
 ## 4.  Limitations and future work
 
-
+1. In our current implementation of bot, only ine GitHub account can be created among all the team members for working with GitHub as we are not creating as well as storing the tokens for individual users.
+2. The above limitation can be considered for future extension by designing a Token Manager that stores and manages token for every user so that they can work on their individual GitHub accounts.
+3. After execution of curl command in our current implementation, we are just displaying the user about success or failure of the execution. We can extend this by displaying the logs in proper format about how are the things working after running curl command.
+4. Curl command seems to be a good option to build customized example for users to run it. But we can also make use of builder pattern and generate the user request from their inputs.
+5. Currently, the user messages are extracted using the regular expressions and then the necessary actions are decided. In future, we can integrate the natural language processing apis like Wit.ai to make our bot more robust.
