@@ -26,5 +26,7 @@ Link to PROCESS.md is [here](https://github.ncsu.edu/csc510-fall2019/CSC510-17/b
 
 Link to DEPLOY.md is [here](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/DEPLOY.md)
 
+## REPORT
 
+Link to REPORT.md is [here](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/REPORT.md)
 
