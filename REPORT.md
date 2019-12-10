@@ -41,16 +41,16 @@ The bot has three main features:
 
 ## Screenshots
 
-# Screenshot-1
+#### Screenshot-1
 ![Task 1](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/Screenshots/Report_Task1.png)
 
-# Screenshot-2
+#### Screenshot-2
 ![Task 2](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/Screenshots/Report_Task2.png)
 
-# Screenshot-3
+#### Screenshot-3
 ![Task 3](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/Screenshots/Report_Task3.png)
 
-# Screenshot-4
+#### Screenshot-4
 ![Task 4](https://github.ncsu.edu/csc510-fall2019/CSC510-17/blob/master/Screenshots/Report_Task4.png)
 
 ## 3. Our reflection on the bot development process 
